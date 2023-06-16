@@ -1,0 +1,90 @@
+@startuml
+left to right direction
+
+actor Utilisateur
+actor Recruteur
+actor Candidat
+actor Administrateur
+
+rectangle "Plateforme de recrutement" {
+  usecase (Auth) as "Authentifier"
+
+  usecase (Create account) as "Créer compte"
+  usecase (See account) as "Voir compte"
+  usecase (Edit account) as "Modifier/supprimer compte"
+  usecase (Connect) as "Se connecter à son compte"
+
+  usecase (Create other account) as "Créer un autre compte"
+  usecase (See other account) as "Voir un autre compte"
+  usecase (Edit other account) as "Modifier/supprimer un autre compte"
+  usecase (List accounts) as "Lister/chercher les comptes"
+  usecase (Make admin) as "Donner les droits d'administrateur"
+  usecase (List ask recruiter) as "Liste demandes compte recruteur"
+  usecase (Check ask recruiter) as "Valider/refuser demande compte recruteur"
+
+  usecase (Ask orga) as "Envoyer demande de création d'organisation"
+  usecase (List orgas) as "Lister/chercher les demandes d'organisation et leurs états"
+  usecase (Check orga) as "Valider/refuser demande d'organisation en attente"
+  usecase (Edit orga) as "Modifier/supprimer une organisation"
+  usecase (Join orga) as "Demander à rejoindre une organisation"
+  usecase (List join orgas) as "Lister/chercher les demandes d'ajout à l'organisation"
+  usecase (Check join orga) as "Valider/refuser demande d'ajout à l'organisation"
+
+  usecase (Add offer) as "Ajouter offre"
+  usecase (Edit offer) as "Modifier/supprimer une offre"
+  usecase (List offers) as "Lister/chercher les offres valides"
+  usecase (See offer) as "Voir le détail d'une offre"
+  usecase (List orga offers) as "Lister/chercher les offres de l'organisation et leurs états"
+
+  usecase (Add cand) as "Candidater"
+  usecase (Check cand) as "Compléter/annuler candidature"
+  usecase (Delete cand) as "Supprimer candidature"
+  usecase (List cands) as "Lister/chercher ses candidatures"
+  usecase (List offer cands) as "Lister/chercher les candidats d'une offre"
+  usecase (Download cands) as "Télécharger les dossier des candidats"
+}
+
+(Edit account) ..> (Auth) : includes
+(Connect) ..> (Auth) : includes
+
+Utilisateur -- (Create account)
+Utilisateur -- (See account)
+Utilisateur -- (Connect)
+
+(See account) <.. (Edit account) : extends
+
+Candidat -left-|> Utilisateur
+Candidat -- (List offers)
+Candidat -- (List cands)
+
+(List offers) <.. (See offer) : extends 
+(List offers) <.. (Add cand) : extends
+(See offer) <.. (Add cand) : extends
+(List cands) <.. (Check cand) : extends
+
+Recruteur -left-|> Candidat
+Recruteur -- (Add offer)
+Recruteur -- (List orga offers)
+Recruteur -- (Ask orga)
+Recruteur -- (Join orga)
+Recruteur -- (List join orgas)
+
+(List orga offers) <.. (Edit offer) : extends
+(List orga offers) <.. (List offer cands) : extends
+(List offer cands) <.. (Download cands) : extends
+(List offer cands) <.. (Delete cand) : extends
+(List join orgas) <.. (Check join orga) : extends
+
+Administrateur -left-|> Candidat
+Administrateur -- (Create other account)
+Administrateur -- (List accounts)
+Administrateur -- (List orgas)
+Administrateur -- (List ask recruiter)
+
+(List orgas) <.. (Check orga) : extends
+(List orgas) <.. (Edit orga) : extends
+(List accounts) <.. (See other account) : extends
+(See other account) <.. (Edit other account) : extends
+(See other account) <.. (Make admin) : extends
+(List ask recruiter) <.. (Check ask recruiter) : extends
+@enduml

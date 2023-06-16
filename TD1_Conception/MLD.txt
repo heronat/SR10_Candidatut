@@ -1,0 +1,19 @@
+Tous les attributs sont NOT NULL sauf indication contraire.
+
+Organisation(#id: int, nom: varchar(50), date_creation: date, etat: {en_attente, actif, refuse}, type: varchar(50), longitude: float, latitude: float )
+
+Utilisateur(#mail: varchar(50), mdp: varchar(255), nom: varchar(50), prenom: varchar(50), telephone: varchar(10), date_creation: date, actif: tinyint(1), type: {candidat, recruteur, administrateur}, longitude, latitude, organisation->Organisation.id )
+
+Rejoindre_Organisation(#mail->Utilisateur.mail, organisation->Organisation.id)
+
+Demande_Recruteur(#mail->Utilisateur.mail)
+
+Fiche_de_Poste(#id : int(11), intitule : varchar(50), statut : varchar(50), responsable : varchar(50), type_metier : varchar(50), lieu : varchar(50), heures_semaine : int, teletravail : tinyint(1), salaire_min : varchar(50), salaire_max : varchar(50), description : text, organisation->Organisation.id )
+
+Offre(#id: int(11), nom : varchar(50), date_creation : date, date_de_validite : date, description : text, nombre_pieces_demandees : int, pieces_demandees : text, etat : {non_publiee, publiee, expiree}, organisation->Organisation.id, fiche_de_poste->Fiche_de_Poste.id )
+
+Candidature(#id : int(11), date_creation : date, candidat : varchar(50), offre ->Offre.id)
+
+Fichier(#urn : varchar(100), auteur->Utilisateur.mail)
+
+AttacheCandidature(#id : int(11), candidature->Candidature.id, fichier->Fichier.urn)

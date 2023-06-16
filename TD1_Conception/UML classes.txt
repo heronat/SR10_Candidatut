@@ -1,0 +1,112 @@
+@startuml
+
+enum etat_org {
+  en_attente
+  actif
+  refuse
+}
+
+class Organisation {
+  id: int {primary key}
+  nom: string
+  date_creation: date
+  etat : etat_org
+  type: string
+  longitude: float
+  latitude: float
+}
+
+
+enum type_user {
+  candidat
+  recruteur
+  administrateur
+}
+
+class Utilisateur {
+  mail: string {primary key}
+  mdp: string
+  nom: string
+  prenom: string
+  telephone: string
+  date_creation: date
+  actif: bool
+  type: type_user
+  longitude: float
+  latitude: float
+}
+
+Utilisateur "*" -- "0..1" Organisation
+
+class Rejoindre_Organisation {
+  
+}
+
+Utilisateur "1" -- "0..1" Rejoindre_Organisation
+Organisation "1" -- "*" Rejoindre_Organisation
+
+class Demande_Recruteur {
+
+} 
+
+Utilisateur "1" -- "0..1" Demande_Recruteur
+Organisation "1" -- "*" Demande_Recruteur
+
+class Fiche_de_Poste {
+  id: int {primary key}
+  intitule: string
+  statut: string
+  responsable: string
+  type_metier: string
+  lieu: string
+  heures_semaine: int
+  teletravail: bool
+  salaire_min int
+  salaire_max: int
+  description: text
+}
+
+enum etat_offre {
+  non_publiee
+  publiee
+  expiree
+}
+
+class Offre {
+  id: int {primary key}
+  nom: string
+  date_creation: date
+  date_de_validite: date
+  description: string
+  nombre_pieces_demandees: int
+  pieces_demandees: text
+  etat: etat_offre
+}
+
+Organisation "1" -- "*" Offre : poste
+
+Fiche_de_Poste "1" -- "*" Offre
+
+class Candidature {
+  id: int {primary key} 
+  date_creation: date
+}
+
+Candidature "*" -- "1" Offre
+Candidature "*" -- "1" Utilisateur
+
+class Fichier {
+  urn: string {primary key}
+  auteur: string
+}
+
+Utilisateur "1" -- "*" Fichier
+
+class Attache_candidature {
+  id: int {primary key}
+}
+
+Attache_candidature "*" -- "1" Fichier
+Attache_candidature "*" -- "1" Candidature
+
+@enduml
