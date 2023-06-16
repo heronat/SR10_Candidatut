@@ -1,0 +1,21 @@
+<nav>
+    <div class="row py-2 bg-light border-top border-bottom">
+        <div class="col-10 px-5">
+            <div class="container btn-group" role="group">
+                <a role="button" class="btn <% if (active == "offers") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/offers"<% } %>>Offres</a>
+                <a role="button" class="btn <% if (active == "post_files") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/post_files"<% } %>>Fiches de poste</a>
+                <a role="button" class="btn <% if (active == "create_post_file") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/create_post_file"<% } %>>Créer Fiche de Poste</a>
+                <a role="button" class="btn <% if (active == "create_offer") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/create_offer"<% } %>>Créer Offre</a>
+                <a role="button" class="btn <% if (active == "orga_request") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/orga_request"<% } %>>Demandes d'ajout</a>
+                <a role="button" class="btn <% if (active == "join_org") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/join_org"<% } %>>Rejoindre organisation</a>
+                <a role="button" class="btn <% if (active == "create_org") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/recruiter/create_org"<% } %>>Créer Organisation</a>
+                <a href="/account" role="button" class="btn btn-outline-primary">Compte</a>
+            </div>
+        </div>
+        <div class="col-2 px-5">
+            <div class="d-flex justify-content-center">
+                <a href="/disconnect" role="button" class="btn btn-danger">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+</nav>

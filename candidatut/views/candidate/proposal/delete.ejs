@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../../header'); %>
+                <nav>
+                    <div class="row py-2 bg-light border-top border-bottom">
+                        <div class="col px-5">
+                            <div class="d-flex justify-content-end">
+                                <a href="/candidate/proposal_detail/<%= id %>" role="button" class="btn btn-danger">Retour</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="container-md p-4">
+            <h1>Êtes-vous sûr de vouloir supprimer la candidature n°<%= id %> ?</h1>
+            <form class="d-flex justify-content-center" action="/candidate/delete_proposal/<%= id %>" method="post">
+                <button type="submit" name="confirm" class="m-1 btn btn-success">Oui</button>
+                <a role="button" href="/candidate/proposal_detail/<%= id %>" class="m-1 btn btn-danger">Non</a>
+            </form>
+        </section>
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <section class="d-flex justify-content-center justify-content-lg-around p-4 border-bottom border-top">
+                <a role="button" href="/candidate/proposals/" class="btn btn-danger">Retour aux comptes</a>
+            </section>
+        </footer>
+    </body>
+</html>

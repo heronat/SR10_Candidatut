@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../../header'); %>
+                <%- include('../nav', {active: "accounts"}); %>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row vw-100">
+                <div class="col-2 py-2 bg-light bg-gradient">
+                    <aside>
+                        <%- include('../../tri', {options: {
+                            'mail': 'Mail',
+                            'nom': 'Nom',
+                            'prenom': 'Prénom',
+                            'telephone': 'Téléphone',
+                            'date_creation': "Date de création",
+                            'type': "Type de Compte",
+                          }, optionsearch: {
+                            'mail': 'Mail',
+                            'nom': 'Nom',
+                            'prenom': 'Prénom',
+                            'telephone': 'Téléphone',
+                            'date_creation': "Date de création",
+                            'type': "Type de Compte",
+                          } }); %>
+                        
+                    </aside>
+                </div>
+                <div class="col-10">
+                    <%- include("../../list_display", {
+                        list: users,
+                        title: (user) => `Compte de ${user.prenom} ${user.nom} (${user.mail}, ${user.actif ? "actif" : "inactif"})`,
+                        buttons: (user) => [{href: `/admin/account_detail/${user.mail}`, name: "Voir les détails"}],
+                        info: (user) => ["Créé le " + user.date_creation + ", Type de compte: " + user.type + ", Telephone: " + user.telephone]
+                    }); %>
+                </div>
+            </div>
+        </div>
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-top">
+                <a href="/candidate/offers" role="button" class="btn btn-success">Espace Candidat</a>
+            </section>
+        </footer>
+    </body>
+</html>

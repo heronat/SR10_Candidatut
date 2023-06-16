@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../../header'); %>
+                <nav>
+                    <div class="row py-2 bg-light border-top border-bottom">
+                        <div class="col px-5">
+                            <div class="d-flex justify-content-end">
+                                <a href="/candidate/proposals" role="button" class="btn btn-danger">Retour</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <section class="container-md p-4">
+            <h1 class="mb-5">Candidature n°<%= candidature.id %> pour l'offre n°<%= offre.id %> (<% offre.nom %>)</h1>
+            <a role="button" href="/candidate/offer_detail/<%= offre.id %>" class="btn btn-primary">Accéder à l'offre</a>
+            <p><%= pieces.length %> pièces attachées sur <%= offre.nombre_pieces_demandees %> demandées</p>
+        </section>
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <section class="d-flex justify-content-center justify-content-lg-around p-4 border-bottom border-top">
+                <!-- <a role="button" href="/candidate/edit_proposal/<%= candidature.id %>" class="btn btn-primary">Editer</a> -->
+                <a role="button" href="/candidate/delete_proposal/<%= candidature.id %>" class="btn btn-danger">Supprimer</a>
+            </section>
+        </footer>
+    </body>
+</html>

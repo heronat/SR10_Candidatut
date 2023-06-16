@@ -1,0 +1,15 @@
+<section class="d-flex justify-content-center p-4 border-bottom border-top">
+    <form>
+        <% for (key of Object.keys(params)) { %>
+            <input type="hidden" name="<%= key %>" value="<%= params[key] %>">
+        <% } %>
+
+        <% if (pageNumber > 0) { %>
+            <button type="submit"class="btn btn-primary m-2" name="page" value="<%= pageNumber - 1 %>">Précédent</button>
+        <% } %> 
+        <button type="button" class="btn btn-secondary"><%= pageNumber + 1 %> / <%= maxPages + 1 %></button>
+        <% if (pageNumber < maxPages) { %>
+            <button type="submit"class="btn btn-primary m-2" name="page" value="<%= pageNumber + 1 %>">Suivant</button>
+        <% } %>
+    </form>
+</section>

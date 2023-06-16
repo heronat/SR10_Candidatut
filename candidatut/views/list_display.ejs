@@ -1,0 +1,13 @@
+<% list.forEach((element) => { %>
+    <div class="row border py-2 justify-content-center text-center">
+        <div class="d-flex justify-content-center">
+            <h3 class="m-2"><%= title(element) %></h3>
+            <% buttons(element).forEach(button => { %>
+                <a href=<%= button.href %> role="button" class="btn btn-<%= button.style || "primary" %> m-2"><%= button.name %></a>
+            <% }) %>
+        </div>
+        <% info(element).forEach(info => { %>
+            <h5><%= info %></h5>
+        <% }) %>
+    </div>
+<% }) %>

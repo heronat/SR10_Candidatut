@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../header'); %>
+                <%- include('nav', {active: "join_org"}); %>
+            </div>
+        </header>
+        <section class="container-md p-4">
+            <form method="post" action="/recruiter/join_org_search">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Nom</label>
+                    <input type="name" name="name" class="form-control" id="inputName" aria-describedby="nameHelp">
+                </div>
+                <button type="submit" class="btn btn-primary">Rechercher</button>
+            </form>
+        </section>
+        <% if (options) { %>
+            <section>
+                <div class="col-12">
+                    <% options.forEach((orga) => { %>
+                        <div class="row border py-2 justify-content-center text-center">
+                            <div class="d-flex justify-content-center">
+                                <h3 class="m-2"><%= orga.nom %> (<%= orga.type %>)</h3>
+                                <form action="join_org/<%= orga.id %>" method="post"><button class="btn btn-success m-2">Rejoindre</button></form>
+                            </div>
+                            <h4><%= orga.adresse %></h4>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+        <% } %>
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <%- include("footer") %>
+        </footer>
+    </body>
+</html>

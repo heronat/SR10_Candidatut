@@ -1,0 +1,15 @@
+body {
+  line-height:1.6;
+  font-size:18px;
+  color:#444;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1,h2,h3 {
+  line-height: 1.2;
+  text-align: center;
+}

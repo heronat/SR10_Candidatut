@@ -1,0 +1,17 @@
+<nav>
+    <div class="row py-2 bg-light border-top border-bottom">
+        <div class="col px-5">
+            <div class="container btn-group" role="group">
+                <a role="button" class="btn <% if (active == "accounts") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/admin/accounts" <% } %>>Comptes</a>
+                <a role="button" class="btn <% if (active == "orgas") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/admin/orgas" <% } %>>Organisations</a>
+                <a role="button" class="btn <% if (active == "recruiter_demand") { %> btn-primary" aria-disabled="true" <% } else { %>btn-outline-primary " href="/admin/recruiter_demand" <% } %>>Demandes Recruteurs</a>
+                <a href="/account" role="button" class="btn btn-outline-primary">Compte</a>
+            </div>
+        </div>
+        <div class="col px-5">
+            <div class="d-flex justify-content-center">
+                <a href="/disconnect" role="button" class="btn btn-danger">Déconnexion</a>
+            </div>
+        </div>
+    </div>
+</nav>

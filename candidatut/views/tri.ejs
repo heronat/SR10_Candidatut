@@ -1,0 +1,25 @@
+<div class="container">
+    <form>
+        <h3>Options de recherche</h3>
+        <h4>Trier par</h4>
+        <select name="tri" id="inputtri">
+            <% for (key in options) { %>
+                <option value='<%= key %>'><%= options[key] %></option>
+            <% } %>
+
+        </select>
+        <h4 class="mt-2">Rechercher par</h4>
+        <select name="optionsearch" id="inputtri">
+            <% for (key in optionsearch) { %>
+                <option value='<%= key %>'><%= optionsearch[key] %></option>
+            <% } %>
+
+        </select> <br>
+        <input type="text" name="search" id="inputsearch" placeholder="Rechercher">
+        <button type="submit" class="mt-2 btn btn-primary">Rechercher</button>
+    </form>
+</div>
+
+<!--
+    organisation / candidatures / offres / comptes / demandes / fiches de poste
+-->

@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../../header'); %>
+                <%- include('../nav', {active: "create_post_file"}); %>
+            </div>
+        </header>
+        <section class="container-md p-4">
+            <form action="/recruiter/create_post_file" method="post">
+                <div class="mb-3">
+                    <label for="inputName" class="form-label">Intitulé</label>
+                    <input required name="name" type="text" class="form-control" id="inputName" aria-describedby="nameHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputStatus" class="form-label">Statut</label>
+                    <input required name="status" type="text" class="form-control" id="inputStatus" aria-describedby="statusHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputResponsable" class="form-label">Responsable hiérarchique</label>
+                    <input required name="responsable" type="text" class="form-control" id="inputResponsable" aria-describedby="responsableHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputType" class="form-label">Type de métier</label>
+                    <input required name="type" type="text" class="form-control" id="inputType" aria-describedby="typeHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPlace" class="form-label">Lieu de la mission</label>
+                    <input required name="place" type="text" class="form-control" id="inputPlace" aria-describedby="placeHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputRythm" class="form-label">Rythme (h/semaine)</label>
+                    <input required name="rythm" type="number" min="1" max="100" class="form-control" id="inputRythm" aria-describedby="rythmHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputMinPay" class="form-label">Salaire minimum (€/mois)</label>
+                    <input required name="minPay" type="number" min="0" max="1000000" class="form-control" id="inputMinPay" aria-describedby="minPayHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputMaxPay" class="form-label">Salaire maximum (€/mois)</label>
+                    <input required name="maxPay" type="number" min="0" max="1000000" class="form-control" id="inputMaxPay" aria-describedby="minPayHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputWorkFromHome" class="form-label">Télétravail possible?</label>
+                    <input name="workFromHome" type="checkbox" id="inputWorkFromHome" aria-describedby="workFromHomeHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="inputDescription" class="form-label">Description</label>
+                    <textarea required name="description" id="inputDescription" class="form-control" aria-describedby="descriptionHelp" rows="5" cols="80"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Créer la fiche de poste</button>
+            </form>
+        </section>
+        <footer class="text-center text-lg-start bg-light text-muted">
+            <%- include("../footer") %>
+        </footer>
+    </body>
+</html>

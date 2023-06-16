@@ -1,0 +1,11 @@
+<div class="row p-4 bg-primary text-light">
+    <h1>Candidat'UT</h1>
+    <h2><%= title %></h2>
+</div>
+<% if (typeof(notification) !== "undefined" && notification.length > 0) { %>
+    <% notification.forEach(element => { %>
+        <div class="row p-2 text-light justify-content-center bg-<%= element.style %>">
+            <%= element.message %>
+        </div>
+    <% }) %>
+<% } %>

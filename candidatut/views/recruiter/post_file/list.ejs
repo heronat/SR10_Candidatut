@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body>
+        <header>
+            <div class="container-fluid">
+                <%- include('../../header'); %>
+                <%- include('../nav', {active: "post_files"}); %>
+            </div>
+        </header>
+        <div class="container-fluid">
+            <div class="row vw-100">
+                <div class="col-2 py-2 bg-light bg-gradient">
+                    <aside>
+                        <!-- <div class="hstack"> -->
+                            <%- include('../../tri', {options: {
+                                'intitule': 'Nom',
+                                'statut': 'Statut',
+                                'type_metier': 'Type de métier',
+                                'lieu': 'Lieu',
+                                'heures_semaine': 'Heures par semaine',
+                                'salaire_min': 'Salaire minimum',
+                            }, optionsearch: {
+                                'intitule': 'Nom',
+                                'statut': 'Statut',
+                                'type_metier': 'Type de métier',
+                                'lieu': 'Lieu',
+                                'heures_semaine': 'Heures par semaine',
+                                'salaire_min': 'Salaire minimum',
+                            } }); %>
+                        <!-- </div> -->
+                    </aside>
+                </div>
+                <div class="col-10">
+                    <%- include("../../list_display", {
+                        list: postFiles,
+                        title: (postFile) => `Fiche de poste: ${postFile.intitule} (${postFile.type_metier}, ${postFile.statut})`,
+                        buttons: (postFile) => [{href: `/recruiter/post_file_detail/${postFile.id}`, name: "Voir les détails"}],
+                        info: (postFile) => [postFile.lieu]
+                    }); %>
+                </div>
+            </div>
+        </div>
+        <footer class="d-flex justify-content-around text-center text-lg-start bg-light text-muted">
+            <%- include('../footer'); %>
+            <%- include('../../page_counter', {pageNumber: pageNumber, maxPages: maxPages, params: params}); %>
+            <div></div>
+        </footer>
+    </body>
+</html>

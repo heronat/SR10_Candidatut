@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom border-top">
+    <% if (type === "candidat") { %>
+        <a href="/candidate/recruiter_demand" role="button" class="btn btn-warning">Demander l'accès Recruteur</a>
+    <% } else if (type === "recruteur") { %>
+        <a href="/recruiter" role="button" class="btn btn-success">Espace Recruteur</a>
+    <% } else if (type === "administrateur") { %>
+        <a href="/admin" role="button" class="btn btn-success">Espace Administrateur</a>
+    <% } %>
+</div>
